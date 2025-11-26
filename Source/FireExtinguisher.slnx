@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/.github/">
+    <File Path="../.github/copilot-instructions.md" />
+  </Folder>
+  <Configurations>
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="CompatUtils/CompatUtils.csproj" Type="6bcddbd3-d267-4e8a-8798-3b6b2cdbdd0b" />
+  <Project Path="FireExtinguisher/FireExtinguisher.csproj" Type="819c1ea0-31b9-488c-a734-c73904b33b6e" />
+</Solution>

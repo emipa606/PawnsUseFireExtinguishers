@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Pawns Use Fire Extinguishers (Continued)</name>
+  <packageId>Mlie.PawnsUseFireExtinguishers</packageId>
+  <author>pointfeev</author>
+  <url>https://github.com/emipa606/PawnsUseFireExtinguishers</url>
+  <supportedVersions>
+    <li>1.2</li>
+    <li>1.3</li>
+    <li>1.4</li>
+    <li>1.5</li>
+    <li>1.6</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>petetimessix.simplesidearms</li>
+    <li>vanillaexpanded.vwe</li>
+    <li>mlie.fireextinguisher</li>
+  </loadAfter>
+  <description>[img]https://img.litet.net/logos/Info.png[/img]
+Update of pointfeevs mod https://steamcommunity.com/sharedfiles/filedetails/?id=2397915519
+
+[img]https://img.litet.net/logos/Notice.png[/img]
+
+[table]
+    [tr][td][url=https://discord.gg/h5TY6DA][img]https://img.litet.net/logos/Discord.png[/img][/url][/td] [td][url=https://github.com/emipa606/PawnsUseFireExtinguishers][img]https://img.litet.net/logos/Github.png[/img][/url][/td]
+    [/tr]
+    [tr]
+        [td][img]https://img.litet.net/logos/SafeToAdd.png[/img][/td]
+        [td][img]https://img.litet.net/logos/SafeToRemove.png[/img][/td]
+    [/tr]
+[/table]
+	
+[img]https://img.litet.net/logos/OriginalDescription.png[/img]
+Allows fire extinguishers to be used for firefighting automatically. If a pawn doesn't have a fire extinguisher or a piece of fire can't be accessed with a fire extinguisher, pawns will go back to default vanilla behavior of beating out fires.
+
+[hr]
+The mod works by checking the pawn's inventory for a fire extinguisher and checking if the pawn can actually use the fire extinguisher on any fires. If those are both true, the pawn will equip the fire extinguisher, go to within range of a fire, shoot the fire, then re-equip the weapon he had beforehand. If both are false however, the pawn will then just go beat the fire like normal.
+
+[hr]
+[u]Currently compatible with fire extinguishing weapons from:[/u]
+[list]
+[*]Any mod that uses the vanilla Extinguish damage definition, such as:
+[list]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2885014197]Firefoam Things[/url]
+[/list]
+
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1814383360]Vanilla Weapons Expanded[/url] ([i]By the way, if you wish to have pawns incapable of violence use VWE's Fire Extinguisher, see [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2655869813]Ben Lubar's Vanilla Expanded Patches[/url]!)[/i]
+
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2195996970]Fire Extinguisher (Continued)[/url]
+[/list]
+
+if there are any extinguishers I've missed and you'd like to use automatically, leave a comment! However, please test if it doesn't already work, as it may use the vanilla Extinguish damage definition; if it does work, I'd appreciate you letting me know in the comments so I can further populate this description! :)
+
+[b]NOTE[/b]: This mod will be completely useless if you don't use at least one mod with a fire extinguishing weapon.
+
+[hr]
+The mod is intended to be a sort-of "addition" to the auto-equip on job feature from [url=https://steamcommunity.com/sharedfiles/filedetails/?id=927155256]Simple Sidearms[/url] or [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2355912467]Grab Your Tool![/url] (but you don't need either of those mods for this one to work of course). 
+
+Using a mod that allows you to equip extra weapons/tools (such as  [url=https://steamcommunity.com/sharedfiles/filedetails/?id=927155256]Simple Sidearms[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2226330302]Pocket Sand[/url], or  [url=https://steamcommunity.com/workshop/filedetails/?id=1631756268]Combat Extended[/url]) is supported and encouraged, but not required.
+
+[url=https://steamcommunity.com/workshop/filedetails/?id=1631756268]Combat Extended[/url]'s ammo system is also  supported. Pawns will ignore the fire extinguisher in their inventory if it doesn't have any ammunition to fire. All you have to do is give pawns a loadout with Firefoam (or whatever ammo the extinguisher from your selected mod uses) and they should reload the extinguisher when they need to use it.
+
+[hr]
+Very simple and lightweight mod, completely safe to add to or remove from saves, [b]HOWEVER[/b]:
+[list]
+[*][b]When removing from a save[/b], you may see small errors in the dev console, but they are completely ignorable. Just make sure to [b]draft and undraft all colonists[/b] before or after removal to make sure they're not still trying to use the job and causing errors.
+[/list]
+
+If you encounter a bug or a potential compatibility issue, please leave a comment and I'll try my best to fix it!
+
+[b]GitHub[/b]: [url=https://github.com/pointfeev/FireExtinguisher]FireExtinguisher[/url]
+
+[img]https://img.litet.net/logos/ReportingIssues.png[/img]
+[list]
+[*] See if the error persists if you just have this mod and its requirements active.
+[*] If not, try adding your other mods until it happens again.
+[*] Always post your log using the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Log Uploader[/url]
+[*] For best support, please use the Discord-channel for error-reporting.
+[*] Do not report errors by making a discussion-thread, I get no notification of that.
+[*] If you have the solution for a problem, please post it to the GitHub repository.
+[*] Use [url=https://github.com/RimSort/RimSort/releases/latest]RimSort[/url] to sort your mods
+[/list]</description>
+  <modVersion IgnoreIfNoMatchingField="True">1.6.1</modVersion>
+</ModMetaData>

@@ -1,0 +1,26 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{819c1ea0-31b9-488c-a734-c73904b33b6e}") = "FireExtinguisher", "FireExtinguisher\FireExtinguisher.csproj", "{764f0a96-0f41-4154-aefa-c57d0b79013c]}"
+EndProject
+Project("{6bcddbd3-d267-4e8a-8798-3b6b2cdbdd0b}") = "CompatUtils", "CompatUtils\CompatUtils.csproj", "{38069d2d-8f59-4110-8705-9f76a2fa8d37]}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{764f0a96-0f41-4154-aefa-c57d0b79013c}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{764f0a96-0f41-4154-aefa-c57d0b79013c}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{764f0a96-0f41-4154-aefa-c57d0b79013c}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{764f0a96-0f41-4154-aefa-c57d0b79013c}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {a5b570b6-33a5-45c7-b7c9-b7388e1dbb47}
+	EndGlobalSection
+EndGlobal
