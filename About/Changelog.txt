@@ -1,4 +1,7 @@
 # Changelog for PawnsUseFireExtinguishers
 
+1.6.2 - Increased the priority of the firefighting job, as suggested
+
+
 1.6.1 - Updated for 1.5 and 1.6
 

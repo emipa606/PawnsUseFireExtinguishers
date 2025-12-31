@@ -1,4 +1,4 @@
-# [Pawns Use Fire Extinguishers (Continued)]()
+# [Pawns Use Fire Extinguishers (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=3612608024)
 
 ![Image](https://img.litet.net/logos/Info.png)
 
@@ -51,8 +51,6 @@ Very simple and lightweight mod, completely safe to add to or remove from saves,
 
 If you encounter a bug or a potential compatibility issue, please leave a comment and I'll try my best to fix it!
 
-**GitHub**: [FireExtinguisher](https://github.com/pointfeev/FireExtinguisher)
-
 ![Image](https://img.litet.net/logos/ReportingIssues.png)
 
 
@@ -65,4 +63,6 @@ If you encounter a bug or a potential compatibility issue, please leave a commen
 -  If you have the solution for a problem, please post it to the GitHub repository.
 -  Use [RimSort](https://github.com/RimSort/RimSort/releases/latest) to sort your mods
 
+ 
 
+[![Image](https://img.shields.io/github/v/release/emipa606/PawnsUseFireExtinguishers?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/3612608024) | tags:  automatic, firefighting

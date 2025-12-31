@@ -5,7 +5,7 @@
     <label>fight fires with fire extinguisher</label>
     <giverClass>FireExtinguisher.WorkGiver_ExtinguishFire</giverClass>
     <workType>Firefighter</workType>
-    <priorityInType>1</priorityInType>
+    <priorityInType>1001</priorityInType>
     <emergency>true</emergency>
     <verb>extinguish</verb>
     <gerund>extinguishing</gerund>
