@@ -1,5 +1,5 @@
-using RimWorld;
 using System.Collections.Generic;
+using RimWorld;
 using Verse;
 using Verse.AI;
 using Verse.Sound;
@@ -8,41 +8,43 @@ namespace FireExtinguisher;
 
 internal static class InventoryUtils
 {
-    private static readonly List<string> ExtinguishDamageDefNames = new List<string>
-    {
+    private static readonly List<string> ExtinguishDamageDefNames =
+    [
         "VWE_Extinguish",
         "FExtExtinguish"
-    };
+    ];
 
-    private static readonly Dictionary<int, ThingWithComps> PreviousWeapons = new Dictionary<int, ThingWithComps>();
+    private static readonly Dictionary<int, ThingWithComps> PreviousWeapons = new();
 
     private static bool CanEquipFireExtinguisher(Pawn pawn, Thing extinguisher)
     {
-        if(pawn != null && extinguisher?.def != null && !pawn.WorkTagIsDisabled(WorkTags.Firefighting))
+        if (pawn == null || extinguisher?.def == null || pawn.WorkTagIsDisabled(WorkTags.Firefighting))
         {
-            if(pawn.WorkTagIsDisabled(WorkTags.Violent))
-            {
-                return !extinguisher.def.IsRangedWeapon;
-            }
-            return true;
+            return false;
         }
-        return false;
+
+        if (pawn.WorkTagIsDisabled(WorkTags.Violent))
+        {
+            return !extinguisher.def.IsRangedWeapon;
+        }
+
+        return true;
     }
 
     private static bool EquipWeapon(Pawn pawn, ThingWithComps weapon, bool cachePrevious = false)
     {
-        if(pawn == null || weapon == null || !UnEquipWeapon(pawn, cachePrevious))
+        if (pawn == null || weapon == null || !UnEquipWeapon(pawn, cachePrevious))
         {
             return false;
         }
-        if(weapon.stackCount > 1)
+
+        if (weapon.stackCount > 1)
         {
             weapon = weapon.SplitOff(1) as ThingWithComps;
         }
-        if(weapon?.holdingOwner != null)
-        {
-            weapon.holdingOwner.Remove(weapon);
-        }
+
+        weapon?.holdingOwner?.Remove(weapon);
+
         pawn.equipment.AddEquipment(weapon);
         weapon?.def?.soundInteract?.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
         return true;
@@ -50,74 +52,71 @@ internal static class InventoryUtils
 
     private static bool UnEquipWeapon(Pawn pawn, bool cachePrevious = false)
     {
-        if(pawn == null)
+        if (pawn == null)
         {
             return false;
         }
-        ThingWithComps primary = pawn.equipment.Primary;
-        if(primary == null)
+
+        var primary = pawn.equipment.Primary;
+        if (primary == null)
         {
             return true;
         }
-        if(pawn.inventory.innerContainer.TryAddOrTransfer(primary))
+
+        if (pawn.inventory.innerContainer.TryAddOrTransfer(primary))
         {
-            if(cachePrevious)
+            if (cachePrevious)
             {
                 PreviousWeapons.SetOrAdd(pawn.thingIDNumber, primary);
             }
+
             return true;
         }
+
         Log.Error($"[FireExtinguisher] Failed to un-equip weapon for {pawn.LabelShort}: {primary.Label}");
         return false;
     }
 
     internal static bool CanEquipFireExtinguisher(Pawn pawn)
     {
-        if(GetFireExtinguisherFromEquipment(pawn) == null)
-        {
-            return CanEquipFireExtinguisher(pawn, GetFireExtinguisherFromInventory(pawn));
-        }
-        return true;
+        return GetFireExtinguisherFromEquipment(pawn) != null ||
+               CanEquipFireExtinguisher(pawn, GetFireExtinguisherFromInventory(pawn));
     }
 
     internal static bool CanWeaponExtinguish(ThingWithComps weapon)
     {
-        DamageDef damageDef = GetPrimaryVerb(weapon)?.GetDamageDef();
-        if(damageDef != null)
+        var damageDef = GetPrimaryVerb(weapon)?.GetDamageDef();
+        if (damageDef == null)
         {
-            if(damageDef != DamageDefOf.Extinguish)
-            {
-                return ExtinguishDamageDefNames.Contains(damageDef.defName);
-            }
-            return true;
+            return false;
         }
-        return false;
+
+        return damageDef == DamageDefOf.Extinguish || ExtinguishDamageDefNames.Contains(damageDef.defName);
     }
 
     internal static bool EquipFireExtinguisher(Pawn pawn, bool cachePrevious = true)
     {
-        if(GetFireExtinguisherFromEquipment(pawn) == null)
-        {
-            return EquipWeapon(pawn, GetFireExtinguisherFromInventory(pawn), cachePrevious);
-        }
-        return true;
+        return GetFireExtinguisherFromEquipment(pawn) != null ||
+               EquipWeapon(pawn, GetFireExtinguisherFromInventory(pawn), cachePrevious);
     }
 
     internal static Toil EquipFireExtinguisherToil()
     {
-        Toil toil = ToilMaker.MakeToil("EquipFireExtinguisherToil");
+        var toil = ToilMaker.MakeToil();
         toil.initAction = delegate
         {
-            Pawn actor = toil.actor;
-            Pawn_JobTracker jobs = actor.jobs;
-            if(GetFireExtinguisherFromEquipment(actor) == null)
+            var actor = toil.actor;
+            var jobs = actor.jobs;
+            if (GetFireExtinguisherFromEquipment(actor) == null)
             {
                 EquipFireExtinguisher(actor, !PreviousWeapons.ContainsKey(actor.thingIDNumber));
             }
-            if(GetFireExtinguisherFromEquipment(actor) == null)
+
+            if (GetFireExtinguisherFromEquipment(actor) == null)
             {
                 jobs.EndCurrentJob(JobCondition.Ongoing | JobCondition.Succeeded);
             }
+
             jobs.curDriver.ReadyForNextToil();
         };
         return toil;
@@ -125,46 +124,47 @@ internal static class InventoryUtils
 
     internal static ThingWithComps GetFireExtinguisherFromEquipment(Pawn pawn)
     {
-        ThingWithComps thingWithComps = pawn?.equipment?.Primary;
-        if(thingWithComps == null ||
+        var thingWithComps = pawn?.equipment?.Primary;
+        if (thingWithComps == null ||
             !CanWeaponExtinguish(thingWithComps) ||
             !ModCompatibility.CheckWeapon(thingWithComps))
         {
             return null;
         }
+
         return thingWithComps;
     }
 
     internal static ThingWithComps GetFireExtinguisherFromInventory(Pawn pawn)
     {
-        return pawn?.inventory?.innerContainer?.FirstOrFallback(
-            (Thing thing) => thing is ThingWithComps thingWithComps &&
-            CanWeaponExtinguish(thingWithComps) &&
-            ModCompatibility.CheckWeapon(thingWithComps)) as ThingWithComps;
+        return pawn?.inventory?.innerContainer?.FirstOrFallback(thing => thing is ThingWithComps thingWithComps &&
+                                                                         CanWeaponExtinguish(thingWithComps) &&
+                                                                         ModCompatibility.CheckWeapon(thingWithComps))
+            as ThingWithComps;
     }
 
     internal static Verb GetPrimaryVerb(ThingWithComps weapon)
-    { return weapon?.GetComp<CompEquippable>()?.PrimaryVerb; }
-
-    internal static bool UnEquipFireExtinguisher(Pawn pawn)
     {
-        if(GetFireExtinguisherFromEquipment(pawn) == null)
+        return weapon?.GetComp<CompEquippable>()?.PrimaryVerb;
+    }
+
+    internal static void UnEquipFireExtinguisher(Pawn pawn)
+    {
+        if (GetFireExtinguisherFromEquipment(pawn) == null)
         {
-            return true;
+            return;
         }
-        if(!PreviousWeapons.TryGetValue(pawn.thingIDNumber, out var value))
+
+        if (!PreviousWeapons.TryGetValue(pawn.thingIDNumber, out var value))
         {
-            return true;
+            return;
         }
-        if(value == pawn.equipment?.Primary)
+
+        if (value != pawn.equipment?.Primary && (!UnEquipWeapon(pawn) || !EquipWeapon(pawn, value)))
         {
-            PreviousWeapons.Remove(pawn.thingIDNumber);
-            return true;
+            return;
         }
-        if(UnEquipWeapon(pawn) && EquipWeapon(pawn, value))
-        {
-            return PreviousWeapons.Remove(pawn.thingIDNumber);
-        }
-        return false;
+
+        PreviousWeapons.Remove(pawn.thingIDNumber);
     }
 }

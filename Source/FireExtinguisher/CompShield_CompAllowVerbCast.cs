@@ -9,14 +9,14 @@ public static class CompShield_CompAllowVerbCast
 {
     internal static void Postfix(ref bool __result, Verb verb)
     {
-        if(__result)
+        if (__result)
         {
             return;
         }
-        if(InventoryUtils.CanWeaponExtinguish(verb?.EquipmentSource))
+
+        if (InventoryUtils.CanWeaponExtinguish(verb?.EquipmentSource))
         {
             __result = true;
         }
     }
 }
-

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: fight fires with fire extinguisher -->
+  <ExtinguishFire.label>fight fires with fire extinguisher</ExtinguishFire.label>
+  <!-- EN: extinguishing -->
+  <ExtinguishFire.gerund>extinguishing</ExtinguishFire.gerund>
+  <!-- EN: extinguish -->
+  <ExtinguishFire.verb>extinguish</ExtinguishFire.verb>
+</LanguageData>

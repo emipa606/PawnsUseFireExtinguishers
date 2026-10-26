@@ -1,8 +1,6 @@
-using HarmonyLib;
-using RimWorld;
 using System.Reflection;
+using HarmonyLib;
 using Verse;
-using Verse.AI;
 
 namespace FireExtinguisher;
 
@@ -14,4 +12,3 @@ internal static class HarmonyPatches
         new Harmony("pointfeev.fireextinguisher").PatchAll(Assembly.GetExecutingAssembly());
     }
 }
-

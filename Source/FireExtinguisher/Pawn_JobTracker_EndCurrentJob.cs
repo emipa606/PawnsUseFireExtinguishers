@@ -9,13 +9,13 @@ public static class Pawn_JobTracker_EndCurrentJob
 {
     internal static bool Prefix(Pawn_JobTracker __instance, Pawn ___pawn)
     {
-        if(__instance?.curJob?.def != JobDefOf_ExtinguishFire.ExtinguishFire || ___pawn == null)
+        if (__instance?.curJob?.def != JobDefOf_ExtinguishFire.ExtinguishFire || ___pawn == null)
         {
             return true;
         }
+
         InventoryUtils.UnEquipFireExtinguisher(___pawn);
         CastUtils.LastCheck.Remove(___pawn.thingIDNumber);
         return true;
     }
 }
-

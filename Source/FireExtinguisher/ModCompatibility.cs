@@ -1,6 +1,5 @@
-using CompatUtils;
-using System;
 using System.Reflection;
+using CompatUtils;
 using Verse;
 
 namespace FireExtinguisher;
@@ -16,25 +15,22 @@ internal static class ModCompatibility
             "ceteam.combatextended",
             "CombatExtended.CE_Utility",
             "HasAmmo",
-            new Type[1] { typeof(ThingWithComps) },
-            logError: true);
+            [typeof(ThingWithComps)],
+            true);
     }
 
     private static bool HasAmmo(ThingWithComps thingWithComps)
     {
-        if((object)CombatExtendedHasAmmoMethod != null)
+        if ((object)CombatExtendedHasAmmoMethod != null)
         {
             return (bool)CombatExtendedHasAmmoMethod.Invoke(null, [thingWithComps]);
         }
+
         return true;
     }
 
     internal static bool CheckWeapon(ThingWithComps thingWithComps)
     {
-        if(thingWithComps != null)
-        {
-            return HasAmmo(thingWithComps);
-        }
-        return false;
+        return thingWithComps != null && HasAmmo(thingWithComps);
     }
 }
